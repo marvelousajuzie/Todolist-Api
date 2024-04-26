@@ -1,0 +1,662 @@
+openapi: 3.0.3
+info:
+  title: DRF Todolist
+  version: 0.0.0
+paths:
+  /api/create/:
+    get:
+      operationId: api_create_retrieve
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    post:
+      operationId: api_create_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    patch:
+      operationId: api_create_partial_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    delete:
+      operationId: api_create_destroy
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/delete/{id}/:
+    get:
+      operationId: api_delete_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    post:
+      operationId: api_delete_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    patch:
+      operationId: api_delete_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    delete:
+      operationId: api_delete_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/list/:
+    get:
+      operationId: api_list_retrieve
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    post:
+      operationId: api_list_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    patch:
+      operationId: api_list_partial_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    delete:
+      operationId: api_list_destroy
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/login/:
+    post:
+      operationId: api_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLogin'
+          description: ''
+  /api/register/:
+    post:
+      operationId: api_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserserializer'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUserserializer'
+          description: ''
+  /api/schema/:
+    get:
+      operationId: api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/token/:
+    post:
+      operationId: api_token_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+        required: true
+      security:
+      - tokenAuth: []
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: ''
+  /api/update/{id}/:
+    get:
+      operationId: api_update_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    post:
+      operationId: api_update_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Todolistserializer'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    patch:
+      operationId: api_update_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTodolistserializer'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todolistserializer'
+          description: ''
+    delete:
+      operationId: api_update_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    AuthToken:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          readOnly: true
+      required:
+      - password
+      - token
+      - username
+    CustomUserserializer:
+      type: object
+      properties:
+        email:
+          type: string
+          maxLength: 250
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        password:
+          type: string
+          writeOnly: true
+        password2:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - password
+      - password2
+      - username
+    PatchedTodolistserializer:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 300
+        description:
+          type: string
+        user:
+          type: integer
+    Todolistserializer:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 300
+        description:
+          type: string
+        user:
+          type: integer
+      required:
+      - description
+      - title
+      - user
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 150
+      required:
+      - email
+      - password
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
