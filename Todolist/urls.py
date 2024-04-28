@@ -5,9 +5,9 @@ from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
 
 
-# router = DefaultRouter()
+router = DefaultRouter()
 # router.register(r'todo', TodoView, basename= 'Todoist')
-# router.register(r'register', CustomUserRegister, basename= 'register')
+router.register(r'register', CustomUserRegister, basename= 'register'),
 # router.register(r'login', CustomUserLogin, basename= 'login')
 # router.register(r'token', obtain_auth_token, basename= 'obtain')
 
@@ -19,8 +19,8 @@ urlpatterns = [
     path('destroyproduct/', TodoView.as_view({'get': 'destroy'})),
 
 
-    path('register/', CustomUserRegister.as_view({'post': 'create'})),
+    # path('register/', CustomUserRegister.as_view({'post': 'create'})),
     path('login/', CustomUserLogin.as_view({'post': 'create'})),
 
-    # path('', include(router.urls)),
+    path('', include(router.urls)),
 ]

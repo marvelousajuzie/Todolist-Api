@@ -3,7 +3,7 @@ from django.contrib.auth.password_validation import validate_password
 from .models import CustomUser, TodoList
 
 
-class CustomUserserializer(serializers.ModelSerializer):
+class CustomUserRegisterserializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only = True)
     password2 = serializers.CharField(write_only = True)
 

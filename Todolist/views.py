@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import status
-from .serializer import CustomUserserializer, UserLoginSerializer, Todolistserializer
+from rest_framework import status, permissions
+from .serializer import CustomUserRegisterserializer, UserLoginSerializer, Todolistserializer
 from rest_framework.authentication import TokenAuthentication
 from .pagination import Todolistpagination
 from rest_framework.authtoken.models import Token
@@ -13,13 +13,13 @@ from django.contrib.auth import authenticate
 
 
 class CustomUserRegister(viewsets.ModelViewSet):
-        serializer_class = CustomUserserializer
-
+        serializer_class = CustomUserRegisterserializer
+        permission_classes = [permissions.AllowAny]
         def post_queryset(self):
             return []
         
         def create(self, request):
-            serializer = self.get_serializer_class(data= request.data)
+            serializer = self.get_serializer(data= request.data)
             if serializer.is_valid():
                 serializer.save()
                 user = serializer.data
@@ -32,6 +32,7 @@ class CustomUserRegister(viewsets.ModelViewSet):
 class CustomUserLogin(viewsets.ModelViewSet):
 
     serializer_class = UserLoginSerializer
+    permission_classes = [permissions.AllowAny]
 
     def post_queryset(self):
         return []
@@ -53,7 +54,7 @@ class CustomUserLogin(viewsets.ModelViewSet):
     
 
 class TodoView(viewsets.ModelViewSet):
-    authentication_classes =  [TokenAuthentication]
+    # authentication_classes =  [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     serializer_class = Todolistserializer
