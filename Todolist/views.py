@@ -15,7 +15,7 @@ from django.contrib.auth import authenticate
 class CustomUserRegister(viewsets.ModelViewSet):
         serializer_class = CustomUserserializer
 
-        def get_queryset(self):
+        def post_queryset(self):
             return []
         
         def create(self, request):
@@ -33,7 +33,7 @@ class CustomUserLogin(viewsets.ModelViewSet):
 
     serializer_class = UserLoginSerializer
 
-    def get_queryset(self):
+    def post_queryset(self):
         return []
     
     def create(self, request):
