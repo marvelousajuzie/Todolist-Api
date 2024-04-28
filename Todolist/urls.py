@@ -19,8 +19,8 @@ urlpatterns = [
     path('destroyproduct/', TodoView.as_view({'get': 'destroy'})),
 
 
-    path('register/', CustomUserRegister.as_view({'get': 'create'})),
-    path('login/', CustomUserLogin.as_view({'get': 'create'})),
+    path('register/', CustomUserRegister.as_view({'post': 'create'})),
+    path('login/', CustomUserLogin.as_view({'post': 'create'})),
 
     # path('', include(router.urls)),
 ]
