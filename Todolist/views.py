@@ -8,7 +8,6 @@ from rest_framework.authentication import TokenAuthentication
 from .pagination import Todolistpagination
 from rest_framework.authtoken.models import Token
 from .models import CustomUser, TodoList
-from drf_spectacular.utils import extend_schema
 from django.contrib.auth import authenticate
 
 
@@ -51,10 +50,22 @@ class CustomUserLogin(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
+
+# class CustomUserLogout(viewsets.ModelViewSet):
+#     authentication_classes =  [TokenAuthentication]
+#     permission_classes = [IsAuthenticated]
+
+#     def get_queryset(self):
+#         return []
+
+#     def create(self, request, pk):
+#         user = CustomUser.objects.get( id= pk, user= request.user)
+#         user.logout()
+#         return Response({'messages': 'Logged out sucessfully'}, status= status.HTTP_200_OK)
     
 
 class TodoView(viewsets.ModelViewSet):
-    # authentication_classes =  [TokenAuthentication]
+    authentication_classes =  [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     serializer_class = Todolistserializer
@@ -91,7 +102,5 @@ class TodoView(viewsets.ModelViewSet):
         query_set = TodoList.objects.get(id=pk, user= request.user)
         TodoList.delete(query_set)
         return Response({'message': 'Todolit Deleted Sucessfully'}, status= status.HTTP_200_OK)
-    
-
     
         

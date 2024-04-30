@@ -21,6 +21,8 @@ urlpatterns = [
 
     path('register/', CustomUserRegister.as_view({'post': 'create'})),
     path('login/', CustomUserLogin.as_view({'post': 'create'})),
+    # path('logout/', CustomUserLogout.as_view({'post': 'create'})),
+
 
     # path('', include(router.urls)),
 ]

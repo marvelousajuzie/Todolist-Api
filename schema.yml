@@ -3,9 +3,9 @@ info:
   title: DRF Todolist
   version: 0.0.0
 paths:
-  /api/create/:
+  /api/createproduct/:
     get:
-      operationId: api_create_retrieve
+      operationId: api_createproduct_retrieve
       tags:
       - api
       security:
@@ -17,73 +17,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Todolistserializer'
           description: ''
-    post:
-      operationId: api_create_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-        required: true
-      security:
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todolistserializer'
-          description: ''
-    patch:
-      operationId: api_create_partial_update
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-      security:
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todolistserializer'
-          description: ''
-    delete:
-      operationId: api_create_destroy
-      tags:
-      - api
-      security:
-      - tokenAuth: []
-      responses:
-        '204':
-          description: No response body
-  /api/delete/{id}/:
+  /api/destroyproduct/:
     get:
-      operationId: api_delete_retrieve
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
+      operationId: api_destroyproduct_retrieve
       tags:
       - api
       security:
@@ -95,85 +31,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Todolistserializer'
           description: ''
-    post:
-      operationId: api_delete_create
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-        required: true
-      security:
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todolistserializer'
-          description: ''
-    patch:
-      operationId: api_delete_partial_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-      security:
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todolistserializer'
-          description: ''
-    delete:
-      operationId: api_delete_destroy
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      security:
-      - tokenAuth: []
-      responses:
-        '204':
-          description: No response body
-  /api/list/:
+  /api/listproduct/:
     get:
-      operationId: api_list_retrieve
+      operationId: api_listproduct_list
       tags:
       - api
       security:
@@ -183,66 +43,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Todolistserializer'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todolistserializer'
           description: ''
-    post:
-      operationId: api_list_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-        required: true
-      security:
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todolistserializer'
-          description: ''
-    patch:
-      operationId: api_list_partial_update
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-      security:
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todolistserializer'
-          description: ''
-    delete:
-      operationId: api_list_destroy
-      tags:
-      - api
-      security:
-      - tokenAuth: []
-      responses:
-        '204':
-          description: No response body
   /api/login/:
     post:
       operationId: api_login_create
@@ -264,8 +68,9 @@ paths:
       - tokenAuth: []
       - cookieAuth: []
       - basicAuth: []
+      - {}
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
@@ -280,24 +85,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomUserserializer'
+              $ref: '#/components/schemas/CustomUserRegisterserializer'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/CustomUserserializer'
+              $ref: '#/components/schemas/CustomUserRegisterserializer'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/CustomUserserializer'
+              $ref: '#/components/schemas/CustomUserRegisterserializer'
         required: true
       security:
       - tokenAuth: []
       - cookieAuth: []
       - basicAuth: []
+      - {}
       responses:
-        '200':
+        '201':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomUserserializer'
+                $ref: '#/components/schemas/CustomUserRegisterserializer'
           description: ''
   /api/schema/:
     get:
@@ -446,43 +252,9 @@ paths:
                 type: object
                 additionalProperties: {}
           description: ''
-  /api/token/:
-    post:
-      operationId: api_token_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/AuthToken'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/AuthToken'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AuthToken'
-        required: true
-      security:
-      - tokenAuth: []
-      - cookieAuth: []
-      - basicAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthToken'
-          description: ''
-  /api/update/{id}/:
+  /api/updateproduct/:
     get:
-      operationId: api_update_retrieve
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
+      operationId: api_updateproduct_retrieve
       tags:
       - api
       security:
@@ -494,101 +266,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Todolistserializer'
           description: ''
-    post:
-      operationId: api_update_create
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Todolistserializer'
-        required: true
-      security:
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todolistserializer'
-          description: ''
-    patch:
-      operationId: api_update_partial_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedTodolistserializer'
-      security:
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todolistserializer'
-          description: ''
-    delete:
-      operationId: api_update_destroy
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      security:
-      - tokenAuth: []
-      responses:
-        '204':
-          description: No response body
 components:
   schemas:
-    AuthToken:
-      type: object
-      properties:
-        username:
-          type: string
-          writeOnly: true
-        password:
-          type: string
-          writeOnly: true
-        token:
-          type: string
-          readOnly: true
-      required:
-      - password
-      - token
-      - username
-    CustomUserserializer:
+    CustomUserRegisterserializer:
       type: object
       properties:
         email:
@@ -611,16 +291,6 @@ components:
       - password
       - password2
       - username
-    PatchedTodolistserializer:
-      type: object
-      properties:
-        title:
-          type: string
-          maxLength: 300
-        description:
-          type: string
-        user:
-          type: integer
     Todolistserializer:
       type: object
       properties:
