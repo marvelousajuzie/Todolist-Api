@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS =  ['todolist-api-cv4n.onrender.com']
 # ALLOWED_HOSTS =  []
@@ -122,7 +122,6 @@ AUTH_USER_MODEL = 'Todolist.CustomUser'
 
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_SCHEMA_CLASS': ['drf_spectacular.openapi.AutoSchema',],
 
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework.authentication.TokenAuthentication',
                                        'rest_framework.authentication.SessionAuthentication', 'rest_framework.authentication.BasicAuthentication',),
@@ -137,7 +136,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'DRF Todolist',
+    'TITLE': 'Todolist Api',
+    'DESCRIPTION': 'A Todolist To Create, Read, Update And Delete'
 }
 
 
